@@ -64,6 +64,10 @@ def main() -> None:
             if not member.isfile() or not member.name.endswith(".wav"):
                 continue
             fname = os.path.basename(member.name)       # напр. "blues.00000.wav"
+            # В архіві трапляються службові файли macOS (AppleDouble) на зразок
+            # "._jazz.00016.wav" — це не аудіо, пропускаємо їх
+            if fname.startswith("._"):
+                continue
             genre = fname.split(".")[0]
             names.append(fname)
             genres.append(GTZAN_GENRES.index(genre))

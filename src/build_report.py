@@ -28,6 +28,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 
 from report_docx import DstuReport
 
+LOGS_DIR = RESULTS_DIR / "logs"
 TEMPLATE = ROOT_DIR / "Звіт_Лабораторна_робота_інформації_1.docx"
 OUTPUT = ROOT_DIR / "Звіт_Лабораторна_робота_1_Ходаков.docx"
 
@@ -177,7 +178,8 @@ def build(toc_entries=None, n_pages=None, output=None):
         "PyTorch [11] (побудова та навчання мережі на GPU Apple M1 через MPS), "
         "librosa [10] (обробка звуку), scikit-learn [18] (метрики, розбиття даних) "
         "і matplotlib (рисунки). Увесь програмний код містить детальні коментарі "
-        "українською мовою і наведений у додатку А."
+        "українською мовою і наведений у додатку А, а повні логи виконання "
+        "програми – у додатку Б."
     )
 
     # =====================================================================
@@ -684,10 +686,31 @@ def build(toc_entries=None, n_pages=None, output=None):
         code = (ROOT_DIR / "src" / name).read_text(encoding="utf-8")
         r.code_listing(f"Файл src/{name}", code)
 
+    # =====================================================================
+    # ДОДАТОК Б — ЛОГИ ВИКОНАННЯ ПРОГРАМИ
+    # =====================================================================
+    log_files = [
+        ("prepare_urbansound.log", "Підготовка UrbanSound8K (python src/prepare_urbansound.py)"),
+        ("prepare_gtzan.log", "Підготовка GTZAN (python src/prepare_gtzan.py)"),
+        ("train_urbansound.log", "Навчання на UrbanSound8K (python src/train_urbansound.py)"),
+        ("predict.log", "Прогноз для власних записів (python src/predict.py)"),
+        ("train_gtzan.log", "Навчання на GTZAN (python src/train_gtzan.py)"),
+    ]
+    log_files = [(f, t) for f, t in log_files if (LOGS_DIR / f).exists()]
+    if log_files:
+        r.appendix_heading("Б", "Лістинг логів виконання програми")
+        r.para("У додатку наведено повний вивід програми в консоль під час виконання "
+               "всіх етапів роботи: підготовки даних, навчання всіх варіантів мереж "
+               "(втрати і точність на кожній епосі), підсумкових метрик і прогнозів "
+               "для власних записів. Логи збережено в теці results/logs.")
+        for fname, title in log_files:
+            r.code_listing(f"{title} – файл results/logs/{fname}",
+                           (LOGS_DIR / fname).read_text(encoding="utf-8"))
+
     # --- Заповнюємо перший абзац реферату (кількість рисунків, таблиць, джерел) ---
     abstract_par.add_run(
         f"Звіт містить {n_pages or 0} с., {r.counts['figures']} рис., {r.counts['tables']} табл., "
-        f"1 додаток, {len(REFERENCES)} джерел."
+        f"{2 if log_files else 1} додатки, {len(REFERENCES)} джерел."
     )
     out = output or OUTPUT
     r.save(out)

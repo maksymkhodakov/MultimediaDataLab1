@@ -1,0 +1,13 @@
+Пристрій для навчання: mps
+Треків: 999, фрагментів по 3 с: (9990, 96, 130)
+Треки train/val/test: 719/80/200
+  [A] навчання: базова (16-128), без аугментації
+    [A] епоха  1/30: train loss=1.961 acc=0.290 | val loss=1.624 acc=0.465
+    [A] епоха  2/30: train loss=1.564 acc=0.455 | val loss=1.359 acc=0.549
+    [A] епоха  3/30: train loss=1.351 acc=0.536 | val loss=1.159 acc=0.644
+    [A] епоха  4/30: train loss=1.169 acc=0.604 | val loss=1.108 acc=0.651
+    [A] епоха  5/30: train loss=1.024 acc=0.666 | val loss=1.112 acc=0.591
+    [A] епоха  6/30: train loss=0.925 acc=0.687 | val loss=0.847 acc=0.741
+    [A] епоха  7/30: train loss=0.844 acc=0.718 | val loss=0.990 acc=0.635
+    [A] епоха  8/30: train loss=0.764 acc=0.744 | val loss=1.483 acc=0.531
+    [A] епоха  9/30: train loss=0.710 acc=0.760 | val loss=0.769 acc=0.731

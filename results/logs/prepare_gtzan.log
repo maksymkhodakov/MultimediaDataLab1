@@ -1,0 +1,18 @@
+### Запуск 1 (завершився помилкою: службовий файл macOS ._jazz.00016.wav в архіві)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Архів завантажено за 1850 с
+Traceback (most recent call last):
+  File "/Users/maksymkhodakov/PycharmProjects/MultimediaDataLab1/src/prepare_gtzan.py", line 99, in <module>
+    main()
+    ~~~~^^
+  File "/Users/maksymkhodakov/PycharmProjects/MultimediaDataLab1/src/prepare_gtzan.py", line 69, in main
+    genres.append(GTZAN_GENRES.index(genre))
+                  ~~~~~~~~~~~~~~~~~~^^^^^^^
+ValueError: list.index(x): x not in list
+
+### Запуск 2 (після виправлення: файли ._* пропускаються; архів уже завантажено)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Архів завантажено за 0 с
+Знайдено треків: 1000
+  пропущено пошкоджений файл: jazz.00054.wav
+Треків: 999, фрагментів по 3 с: (9990, 96, 130), 15 с
