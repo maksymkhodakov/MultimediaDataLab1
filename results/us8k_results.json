@@ -1,0 +1,427 @@
+{
+  "device": "mps",
+  "n_clips": 8732,
+  "spec_shape": [
+    64,
+    173
+  ],
+  "split_sizes": {
+    "train": 6273,
+    "val": 806,
+    "test": 1653
+  },
+  "class_counts": {
+    "air_conditioner": 1000,
+    "car_horn": 429,
+    "children_playing": 1000,
+    "dog_bark": 1000,
+    "drilling": 1000,
+    "engine_idling": 1000,
+    "gun_shot": 374,
+    "jackhammer": 1000,
+    "siren": 929,
+    "street_music": 1000
+  },
+  "fold_counts": {
+    "1": 873,
+    "2": 888,
+    "3": 925,
+    "4": 990,
+    "5": 936,
+    "6": 823,
+    "7": 838,
+    "8": 806,
+    "9": 816,
+    "10": 837
+  },
+  "norm": {
+    "mean": -39.633705139160156,
+    "std": 21.216320037841797
+  },
+  "layers": [
+    [
+      "features.0.block.0",
+      "Conv2d",
+      "(16, 64, 173)",
+      160
+    ],
+    [
+      "features.0.block.1",
+      "BatchNorm2d",
+      "(16, 64, 173)",
+      32
+    ],
+    [
+      "features.0.block.2",
+      "ReLU",
+      "(16, 64, 173)",
+      0
+    ],
+    [
+      "features.0.block.3",
+      "MaxPool2d",
+      "(16, 32, 86)",
+      0
+    ],
+    [
+      "features.1.block.0",
+      "Conv2d",
+      "(32, 32, 86)",
+      4640
+    ],
+    [
+      "features.1.block.1",
+      "BatchNorm2d",
+      "(32, 32, 86)",
+      64
+    ],
+    [
+      "features.1.block.2",
+      "ReLU",
+      "(32, 32, 86)",
+      0
+    ],
+    [
+      "features.1.block.3",
+      "MaxPool2d",
+      "(32, 16, 43)",
+      0
+    ],
+    [
+      "features.2.block.0",
+      "Conv2d",
+      "(64, 16, 43)",
+      18496
+    ],
+    [
+      "features.2.block.1",
+      "BatchNorm2d",
+      "(64, 16, 43)",
+      128
+    ],
+    [
+      "features.2.block.2",
+      "ReLU",
+      "(64, 16, 43)",
+      0
+    ],
+    [
+      "features.2.block.3",
+      "MaxPool2d",
+      "(64, 8, 21)",
+      0
+    ],
+    [
+      "features.3.block.0",
+      "Conv2d",
+      "(128, 8, 21)",
+      73856
+    ],
+    [
+      "features.3.block.1",
+      "BatchNorm2d",
+      "(128, 8, 21)",
+      256
+    ],
+    [
+      "features.3.block.2",
+      "ReLU",
+      "(128, 8, 21)",
+      0
+    ],
+    [
+      "features.3.block.3",
+      "MaxPool2d",
+      "(128, 4, 10)",
+      0
+    ],
+    [
+      "pool",
+      "AdaptiveAvgPool2d",
+      "(128, 1, 1)",
+      0
+    ],
+    [
+      "dropout",
+      "Dropout",
+      "(128,)",
+      0
+    ],
+    [
+      "classifier",
+      "Linear",
+      "(10,)",
+      1290
+    ]
+  ],
+  "experiments": [
+    {
+      "key": "A",
+      "title": "базова (16-128 фільтрів, lr=2e-3)",
+      "config": {
+        "key": "A",
+        "title": "базова (16-128 фільтрів, lr=2e-3)",
+        "base_channels": 16,
+        "lr": 0.002,
+        "epochs": 30,
+        "batch_size": 64,
+        "weight_decay": 0.01,
+        "dropout": 0.3,
+        "spec_augment": false,
+        "freq_mask": 8,
+        "time_mask": 20,
+        "n_masks": 2
+      },
+      "n_params": 98922,
+      "best_epoch": 30,
+      "best_val_acc": 0.748138964176178,
+      "test_acc": 0.8191167574107683,
+      "macro_f1": 0.8339587028220764,
+      "train_seconds": 230.98614120483398,
+      "final_train_acc": 0.9660449545671927
+    },
+    {
+      "key": "B",
+      "title": "+ SpecAugment",
+      "config": {
+        "key": "B",
+        "title": "+ SpecAugment",
+        "base_channels": 16,
+        "lr": 0.002,
+        "epochs": 30,
+        "batch_size": 64,
+        "weight_decay": 0.01,
+        "dropout": 0.3,
+        "spec_augment": true,
+        "freq_mask": 8,
+        "time_mask": 20,
+        "n_masks": 2
+      },
+      "n_params": 98922,
+      "best_epoch": 30,
+      "best_val_acc": 0.7344912886619568,
+      "test_acc": 0.8154869933454325,
+      "macro_f1": 0.8303654605454875,
+      "train_seconds": 233.03178215026855,
+      "final_train_acc": 0.8987725171369361
+    },
+    {
+      "key": "C",
+      "title": "+ SpecAugment, ширша (32-256)",
+      "config": {
+        "key": "C",
+        "title": "+ SpecAugment, ширша (32-256)",
+        "base_channels": 32,
+        "lr": 0.002,
+        "epochs": 30,
+        "batch_size": 64,
+        "weight_decay": 0.01,
+        "dropout": 0.3,
+        "spec_augment": true,
+        "freq_mask": 8,
+        "time_mask": 20,
+        "n_masks": 2
+      },
+      "n_params": 391370,
+      "best_epoch": 24,
+      "best_val_acc": 0.7630273103713989,
+      "test_acc": 0.8033877797943134,
+      "macro_f1": 0.8201256273855453,
+      "train_seconds": 475.8505880832672,
+      "final_train_acc": 0.934640522875817
+    },
+    {
+      "key": "D",
+      "title": "+ SpecAugment, lr=5e-4",
+      "config": {
+        "key": "D",
+        "title": "+ SpecAugment, lr=5e-4",
+        "base_channels": 16,
+        "lr": 0.0005,
+        "epochs": 30,
+        "batch_size": 64,
+        "weight_decay": 0.01,
+        "dropout": 0.3,
+        "spec_augment": true,
+        "freq_mask": 8,
+        "time_mask": 20,
+        "n_masks": 2
+      },
+      "n_params": 98922,
+      "best_epoch": 30,
+      "best_val_acc": 0.7047146558761597,
+      "test_acc": 0.7882637628554144,
+      "macro_f1": 0.8008733159064612,
+      "train_seconds": 235.10065412521362,
+      "final_train_acc": 0.8227323449705085
+    },
+    {
+      "key": "E",
+      "title": "ширша (32-256), без аугментації",
+      "config": {
+        "key": "E",
+        "title": "ширша (32-256), без аугментації",
+        "base_channels": 32,
+        "lr": 0.002,
+        "epochs": 30,
+        "batch_size": 64,
+        "weight_decay": 0.01,
+        "dropout": 0.3,
+        "spec_augment": false,
+        "freq_mask": 8,
+        "time_mask": 20,
+        "n_masks": 2
+      },
+      "n_params": 391370,
+      "best_epoch": 27,
+      "best_val_acc": 0.748138964176178,
+      "test_acc": 0.7991530550514216,
+      "macro_f1": 0.8130880265922533,
+      "train_seconds": 472.85832595825195,
+      "final_train_acc": 0.9875657580105213
+    },
+    {
+      "key": "F",
+      "title": "+ SpecAugment, ширша, 60 епох",
+      "config": {
+        "key": "F",
+        "title": "+ SpecAugment, ширша, 60 епох",
+        "base_channels": 32,
+        "lr": 0.002,
+        "epochs": 60,
+        "batch_size": 64,
+        "weight_decay": 0.01,
+        "dropout": 0.3,
+        "spec_augment": true,
+        "freq_mask": 8,
+        "time_mask": 20,
+        "n_masks": 2
+      },
+      "n_params": 391370,
+      "best_epoch": 47,
+      "best_val_acc": 0.7555831074714661,
+      "test_acc": 0.8112522686025408,
+      "macro_f1": 0.8317214993925907,
+      "train_seconds": 964.4851551055908,
+      "final_train_acc": 0.9685955683086243
+    }
+  ],
+  "best_key": "C",
+  "report": {
+    "air_conditioner": {
+      "precision": 0.845360824742268,
+      "recall": 0.41,
+      "f1-score": 0.5521885521885522,
+      "support": 200.0
+    },
+    "car_horn": {
+      "precision": 0.9,
+      "recall": 0.9692307692307692,
+      "f1-score": 0.9333333333333333,
+      "support": 65.0
+    },
+    "children_playing": {
+      "precision": 0.8190954773869347,
+      "recall": 0.815,
+      "f1-score": 0.8170426065162907,
+      "support": 200.0
+    },
+    "dog_bark": {
+      "precision": 0.6995708154506438,
+      "recall": 0.815,
+      "f1-score": 0.7528868360277137,
+      "support": 200.0
+    },
+    "drilling": {
+      "precision": 0.8333333333333334,
+      "recall": 0.725,
+      "f1-score": 0.7754010695187166,
+      "support": 200.0
+    },
+    "engine_idling": {
+      "precision": 0.9515151515151515,
+      "recall": 0.8626373626373627,
+      "f1-score": 0.9048991354466859,
+      "support": 182.0
+    },
+    "gun_shot": {
+      "precision": 0.9841269841269841,
+      "recall": 0.9841269841269841,
+      "f1-score": 0.9841269841269841,
+      "support": 63.0
+    },
+    "jackhammer": {
+      "precision": 0.6360153256704981,
+      "recall": 0.9325842696629213,
+      "f1-score": 0.7562642369020501,
+      "support": 178.0
+    },
+    "siren": {
+      "precision": 0.8766233766233766,
+      "recall": 0.8181818181818182,
+      "f1-score": 0.8463949843260188,
+      "support": 165.0
+    },
+    "street_music": {
+      "precision": 0.810126582278481,
+      "recall": 0.96,
+      "f1-score": 0.8787185354691075,
+      "support": 200.0
+    },
+    "accuracy": 0.8033877797943134,
+    "macro avg": {
+      "precision": 0.8355767871127672,
+      "recall": 0.8291761203839855,
+      "f1-score": 0.8201256273855453,
+      "support": 1653.0
+    },
+    "weighted avg": {
+      "precision": 0.8185279790237723,
+      "recall": 0.8033877797943134,
+      "f1-score": 0.7966582189016319,
+      "support": 1653.0
+    }
+  },
+  "top_confusions": [
+    [
+      46,
+      "drilling",
+      "jackhammer"
+    ],
+    [
+      31,
+      "air_conditioner",
+      "jackhammer"
+    ],
+    [
+      29,
+      "air_conditioner",
+      "dog_bark"
+    ],
+    [
+      26,
+      "air_conditioner",
+      "street_music"
+    ],
+    [
+      20,
+      "siren",
+      "dog_bark"
+    ],
+    [
+      19,
+      "children_playing",
+      "dog_bark"
+    ],
+    [
+      16,
+      "engine_idling",
+      "jackhammer"
+    ],
+    [
+      13,
+      "air_conditioner",
+      "drilling"
+    ]
+  ]
+}

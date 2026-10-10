@@ -1,0 +1,122 @@
+[
+  {
+    "file": "car_horn.wav",
+    "duration": 3.5141496598639455,
+    "n_windows": 1,
+    "expected": "car_horn",
+    "top3": [
+      [
+        "dog_bark",
+        0.49081331491470337
+      ],
+      [
+        "children_playing",
+        0.3181880712509155
+      ],
+      [
+        "street_music",
+        0.1209782063961029
+      ]
+    ],
+    "correct": false,
+    "window_hits": 0.0,
+    "figure": "my_car_horn.png",
+    "source": "Wikimedia Commons, «Car Horn.wav», CC0, автор: 15HPanska_Ruttner_Jan"
+  },
+  {
+    "file": "dog_bark_street.wav",
+    "duration": 5.4320181405895696,
+    "n_windows": 2,
+    "expected": "dog_bark",
+    "top3": [
+      [
+        "dog_bark",
+        0.9926591515541077
+      ],
+      [
+        "children_playing",
+        0.006420685909688473
+      ],
+      [
+        "street_music",
+        0.0009189245756715536
+      ]
+    ],
+    "correct": true,
+    "window_hits": 1.0,
+    "figure": "my_dog_bark_street.png",
+    "source": "Wikimedia Commons, «Perro ladrando.ogg», CC BY-SA 4.0, автор: Armartinell"
+  },
+  {
+    "file": "drilling_next_door.wav",
+    "duration": 56.05986394557823,
+    "n_windows": 28,
+    "expected": "drilling",
+    "top3": [
+      [
+        "drilling",
+        0.47478488087654114
+      ],
+      [
+        "dog_bark",
+        0.40714529156684875
+      ],
+      [
+        "street_music",
+        0.052357304841279984
+      ]
+    ],
+    "correct": true,
+    "window_hits": 0.5714285714285714,
+    "figure": "my_drilling_next_door.png",
+    "source": "Wikimedia Commons, «Drilling next door 4.ogg», Public domain, автор: ezwa"
+  },
+  {
+    "file": "siren_police.wav",
+    "duration": 29.232108843537414,
+    "n_windows": 14,
+    "expected": "siren",
+    "top3": [
+      [
+        "siren",
+        0.821500301361084
+      ],
+      [
+        "dog_bark",
+        0.11363376677036285
+      ],
+      [
+        "children_playing",
+        0.057267460972070694
+      ]
+    ],
+    "correct": true,
+    "window_hits": 0.8571428571428571,
+    "figure": "my_siren_police.png",
+    "source": "Wikimedia Commons, «American police siren i.ogg», Public domain, автор: lezer"
+  },
+  {
+    "file": "street_music_violin.wav",
+    "duration": 30.42249433106576,
+    "n_windows": 15,
+    "expected": "street_music",
+    "top3": [
+      [
+        "street_music",
+        0.9998960494995117
+      ],
+      [
+        "car_horn",
+        6.309463060460985e-05
+      ],
+      [
+        "children_playing",
+        2.17938722926192e-05
+      ]
+    ],
+    "correct": true,
+    "window_hits": 1.0,
+    "figure": "my_street_music_violin.png",
+    "source": "Wikimedia Commons, «Street musician violin.ogg», Public domain, автор: natalie"
+  }
+]

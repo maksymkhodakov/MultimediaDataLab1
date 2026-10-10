@@ -1,0 +1,5 @@
+car_horn.wav                 -> dog_bark 49%, children_playing 32%, street_music 12%   [очікувано: car_horn]
+dog_bark_street.wav          -> dog_bark 99%, children_playing 1%, street_music 0%   [очікувано: dog_bark]
+drilling_next_door.wav       -> drilling 47%, dog_bark 41%, street_music 5%   [очікувано: drilling]
+siren_police.wav             -> siren 82%, dog_bark 11%, children_playing 6%   [очікувано: siren]
+street_music_violin.wav      -> street_music 100%, car_horn 0%, children_playing 0%   [очікувано: street_music]
