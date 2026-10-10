@@ -118,6 +118,48 @@ def main() -> None:
     with open(RESULTS_DIR / "my_sounds_results.json", "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
 
+    compare_models(files, device)
+
+
+def compare_models(files: list, device: torch.device) -> None:
+    """Порівнює на тих самих записах усі навчені варіанти мережі та їх ансамбль.
+
+    Якщо найкраща за валідацією модель помиляється, корисно перевірити, чи
+    впорається інший варіант (порада з демонстрації до завдання). Ансамбль —
+    усереднення ймовірностей усіх варіантів: різні моделі помиляються
+    по-різному, тож усереднення часто виправляє окремі помилки.
+    Результат зберігається у results/my_sounds_models.json.
+    """
+    ckpts = sorted(p for p in RUNS_DIR.glob("us8k_[A-Z].pt"))
+    if not ckpts:
+        return
+    keys = [p.stem.split("_")[1] for p in ckpts]
+    table = {}        # файл -> {ключ моделі: передбачений клас}
+    ensemble = {}     # файл -> сума ймовірностей усіх моделей
+    for key, path in zip(keys, ckpts):
+        model, mean, std = load_model(device, path)
+        for f in files:
+            proba = predict_file(f, model, mean, std, device)["proba"]
+            table.setdefault(f.name, {})[key] = US8K_CLASSES[int(np.argmax(proba))]
+            ensemble[f.name] = ensemble.get(f.name, 0) + proba / len(ckpts)
+
+    print("\nПорівняння варіантів мережі на записах (top-1 прогноз):")
+    print(f"{'файл':34s}" + "".join(f"{k:>18s}" for k in keys) + f"{'ансамбль':>18s}")
+    rows, correct = [], {k: 0 for k in keys + ["ens"]}
+    for f in files:
+        exp = expected_class(f)
+        ens_cls = US8K_CLASSES[int(np.argmax(ensemble[f.name]))]
+        preds = dict(table[f.name], ens=ens_cls)
+        for k, c in preds.items():
+            correct[k] += int(c == exp)
+        print(f"{f.name:34s}" + "".join(f"{preds[k]:>18s}" for k in keys) + f"{ens_cls:>18s}")
+        rows.append({"file": f.name, "expected": exp, "preds": preds,
+                     "ensemble_conf": float(ensemble[f.name].max())})
+    print(f"{'правильно з ' + str(len(files)):34s}" + "".join(f"{correct[k]:>18d}" for k in keys)
+          + f"{correct['ens']:>18d}")
+    with open(RESULTS_DIR / "my_sounds_models.json", "w", encoding="utf-8") as fh:
+        json.dump({"models": keys, "rows": rows, "correct": correct}, fh, ensure_ascii=False, indent=2)
+
 
 if __name__ == "__main__":
     main()

@@ -91,6 +91,8 @@ def build(toc_entries=None, n_pages=None, output=None):
     us_f1 = sorted(((us["report"][c]["f1-score"], c) for c in US8K_CLASSES))
     gz_f1 = sorted(((gz["report"][g]["f1-score"], g) for g in GTZAN_GENRES))
     my_correct = sum(1 for r in my if r["correct"])
+    my_models_path = RESULTS_DIR / "my_sounds_models.json"
+    my_models = load("my_sounds_models.json") if my_models_path.exists() else None
 
     r = DstuReport(TEMPLATE)
 
@@ -122,7 +124,10 @@ def build(toc_entries=None, n_pages=None, output=None):
         f"тестових fold-ах 9–10 точності {f3(us_best['test_acc'])} (macro-F1 "
         f"{f3(us_best['macro_f1'])}); модель для GTZAN – точності {f3(gz_best['seg_acc'])} "
         f"на рівні 3-секундних фрагментів і {f3(gz_best['track_acc'])} на рівні "
-        f"треків після усереднення прогнозів фрагментів."
+        f"треків після усереднення прогнозів фрагментів. На {len(my)} сторонніх записах "
+        f"міських звуків найкраща модель правильно визначила клас для {my_correct}"
+        + (f", ансамбль усіх варіантів – для {my_models['correct']['ens']}" if my_models else "")
+        + " записів."
     )
     r.para(
         "Ключові слова: КЛАСИФІКАЦІЯ ЗВУКІВ, ЗГОРТКОВА НЕЙРОННА МЕРЕЖА, "
@@ -583,26 +588,40 @@ def build(toc_entries=None, n_pages=None, output=None):
     # 6 ПЕРЕВІРКА НА ВЛАСНИХ ЗАПИСАХ
     # =====================================================================
     r.section("Перевірка мережі на власних записах")
+    r.subsection("6.1", "Записи для перевірки")
+    classes_covered = sorted({m["expected"] for m in my if m["expected"]})
     r.para(
         "Для перевірки узагальнювальної здатності (пункт 4 завдання) мережу "
-        "застосовано до записів, яких не було в UrbanSound8K: інші мікрофони, інші "
-        "міста, інші умови запису. Використано записи з вільними ліцензіями з "
-        "Wikimedia Commons, конвертовані у WAV (моно, 22 050 Гц); їх перелік і "
-        f"джерела наведено в таблиці {r.next_table_number()}. Для перевірки "
-        "власних записів, зроблених телефоном, достатньо покласти WAV-файли в теку "
-        "my_sounds/ і запустити скрипт predict.py (див. додаток А)."
+        "застосовано до записів, яких не було в UrbanSound8K. Замість записів, "
+        "зроблених телефоном, як і в демонстраційному прикладі до завдання, "
+        "використано справжні польові записи з вільними ліцензіями з Wikimedia "
+        f"Commons – {len(my)} файлів, що охоплюють {len(classes_covered)} з 10 класів "
+        "UrbanSound8K. Для кожного запису перевірено опис джерела: жоден з них не "
+        "походить із сервісу Freesound, з якого зібрано UrbanSound8K, тому мережа "
+        "гарантовано не бачила їх під час навчання. Записи зроблені різними "
+        "авторами, іншими мікрофонами, в інших місцях і акустичних умовах, ніж "
+        "кліпи датасету. Усі файли конвертовано у WAV (моно, "
+        f"22 050 Гц); їх перелік і джерела наведено в таблиці {r.next_table_number()}."
     )
     r.table(["Файл", "Тривалість, с", "Очікуваний клас", "Джерело"],
             [[m["file"], f"{m['duration']:.1f}".replace(".", ","), ua(m["expected"]),
               m["source"].replace("Wikimedia Commons, ", "")] for m in my],
-            "Записи для перевірки мережі", col_widths_mm=[42, 20, 30, 73], font_size=11)
+            "Записи для перевірки мережі", col_widths_mm=[44, 18, 30, 73], font_size=10)
+    r.para(
+        "Щоб перевірити мережу на власних записах, зроблених телефоном, достатньо "
+        "покласти WAV-файли в теку my_sounds/ (назва файлу має починатися з назви "
+        "класу, наприклад siren_my.wav) і запустити скрипти predict.py та "
+        "build_report.py – таблиці й рисунки цього розділу оновляться автоматично."
+    )
+
+    r.subsection("6.2", "Результати найкращої моделі")
     r.para(
         "Функція predict_file працює з файлом будь-якої тривалості: запис "
         "ріжеться на вікна по 4 с з кроком 2 с (так само, як кліпи UrbanSound8K), "
         "кожне вікно перетворюється на спектрограму і класифікується, а "
-        "ймовірності всіх вікон усереднюються. Результати (top-3 прогнози) "
-        f"наведено в таблиці {r.next_table_number()}, спектрограми записів і "
-        f"прогнози – на рисунках {r.next_figure_number()}–"
+        "ймовірності всіх вікон усереднюються. Результати найкращої за валідацією "
+        f"моделі ({us_best['key']}) наведено в таблиці {r.next_table_number()}, "
+        f"спектрограми записів і прогнози – на рисунках {r.next_figure_number()}–"
         f"{r.next_figure_number().split('.')[0]}.{int(r.next_figure_number().split('.')[1]) + len(my) - 1}."
     )
     rows = []
@@ -612,12 +631,38 @@ def build(toc_entries=None, n_pages=None, output=None):
                      "так" if m["correct"] else "ні",
                      pct(m["window_hits"], 0) if m["window_hits"] is not None else "—"])
     r.table(["Файл", "Очікуваний клас", "Вікон", "Top-3 прогноз", "Вірно", "Вірних вікон"], rows,
-            "Результати класифікації записів", col_widths_mm=[38, 27, 12, 58, 13, 17], font_size=11)
+            "Результати класифікації записів найкращою моделлю",
+            col_widths_mm=[40, 26, 12, 57, 13, 17], font_size=10)
     for m in my:
         r.figure(FIGURES_DIR / m["figure"],
                  f"Спектрограма запису {m['file']} і top-3 прогноз мережі")
     for text in MY_ANALYSIS(my, my_correct):
         r.para(text)
+
+    if my_models:
+        r.subsection("6.3", "Порівняння варіантів мережі та ансамбль")
+        keys = my_models["models"]
+        r.para(
+            "Якщо найкраща модель помиляється, варто перевірити інші варіанти мережі. "
+            f"Тому всі {len(keys)} навчених варіантів (A–{keys[-1]}) застосовано до тих "
+            "самих записів, а також побудовано ансамбль – усереднення ймовірностей "
+            "усіх варіантів. Прогнози наведено в таблиці "
+            f"{r.next_table_number()} (знак «+» – правильна відповідь, інакше вказано "
+            "передбачений клас)."
+        )
+        rows = []
+        for row in my_models["rows"]:
+            cells = ["+" if row["preds"][k] == row["expected"] else ua(row["preds"][k])
+                     for k in keys + ["ens"]]
+            rows.append([row["file"], ua(row["expected"])] + cells)
+        corr = my_models["correct"]
+        rows.append(["Правильно", f"з {len(my_models['rows'])}"]
+                    + [corr[k] for k in keys + ["ens"]])
+        r.table(["Файл", "Очікуваний клас"] + keys + ["Ансамбль"], rows,
+                "Прогнози всіх варіантів мережі та ансамблю для записів",
+                col_widths_mm=[36, 23] + [15] * len(keys) + [16], font_size=8)
+        for text in MODELS_ANALYSIS(my_models, us_best):
+            r.para(text)
 
     # =====================================================================
     # 7 КЛАСИФІКАЦІЯ МУЗИЧНИХ ЖАНРІВ
@@ -681,7 +726,7 @@ def build(toc_entries=None, n_pages=None, output=None):
     # ВИСНОВКИ
     # =====================================================================
     r.structural_heading("Висновки")
-    for text in CONCLUSIONS(us, us_best, us_by_test, gz, gz_best, my, my_correct, us_f1, gz_f1):
+    for text in CONCLUSIONS(us, us_best, us_by_test, gz, gz_best, my, my_correct, us_f1, gz_f1, my_models):
         r.para(text)
 
     # =====================================================================
@@ -792,6 +837,11 @@ def US8K_CONFUSION_ANALYSIS(us, us_f1):
 def MY_ANALYSIS(my, my_correct):
     from report_text import my_analysis
     return my_analysis(my, my_correct)
+
+
+def MODELS_ANALYSIS(my_models, us_best):
+    from report_text import models_analysis
+    return models_analysis(my_models, us_best)
 
 
 def GTZAN_ANALYSIS(gz, gz_exp, gz_best, gz_by_track):

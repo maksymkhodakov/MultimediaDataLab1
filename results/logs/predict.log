@@ -1,5 +1,26 @@
+air_conditioner_outdoor_unit.wav -> air_conditioner 30%, children_playing 26%, jackhammer 20%   [очікувано: air_conditioner]
 car_horn.wav                 -> dog_bark 49%, children_playing 32%, street_music 12%   [очікувано: car_horn]
+children_playing_playground.wav -> children_playing 97%, street_music 2%, dog_bark 1%   [очікувано: children_playing]
 dog_bark_street.wav          -> dog_bark 99%, children_playing 1%, street_music 0%   [очікувано: dog_bark]
 drilling_next_door.wav       -> drilling 47%, dog_bark 41%, street_music 5%   [очікувано: drilling]
+engine_idling_car.wav        -> jackhammer 55%, engine_idling 35%, street_music 5%   [очікувано: engine_idling]
+gun_shot_9mm.wav             -> gun_shot 100%, drilling 0%, dog_bark 0%   [очікувано: gun_shot]
+jackhammer_rock_drill.wav    -> drilling 94%, air_conditioner 3%, jackhammer 3%   [очікувано: jackhammer]
+siren_ambulance.wav          -> street_music 90%, siren 6%, car_horn 4%   [очікувано: siren]
 siren_police.wav             -> siren 82%, dog_bark 11%, children_playing 6%   [очікувано: siren]
 street_music_violin.wav      -> street_music 100%, car_horn 0%, children_playing 0%   [очікувано: street_music]
+
+Порівняння варіантів мережі на записах (top-1 прогноз):
+файл                                               A                 B                 C                 D                 E                 F          ансамбль
+air_conditioner_outdoor_unit.wav          jackhammer        jackhammer   air_conditioner   air_conditioner  children_playing   air_conditioner   air_conditioner
+car_horn.wav                        children_playing          dog_bark          dog_bark          dog_bark  children_playing          dog_bark          dog_bark
+children_playing_playground.wav     children_playing  children_playing  children_playing  children_playing  children_playing  children_playing  children_playing
+dog_bark_street.wav                         dog_bark          dog_bark          dog_bark          dog_bark          dog_bark          dog_bark          dog_bark
+drilling_next_door.wav                      drilling          drilling          drilling          dog_bark          drilling          drilling          drilling
+engine_idling_car.wav                  engine_idling     engine_idling        jackhammer     engine_idling     engine_idling        jackhammer     engine_idling
+gun_shot_9mm.wav                            gun_shot          gun_shot          gun_shot          gun_shot          gun_shot          gun_shot          gun_shot
+jackhammer_rock_drill.wav                   drilling          drilling          drilling          drilling          drilling          drilling          drilling
+siren_ambulance.wav                     street_music      street_music      street_music      street_music      street_music             siren      street_music
+siren_police.wav                               siren             siren             siren             siren             siren             siren             siren
+street_music_violin.wav                 street_music      street_music      street_music      street_music      street_music      street_music      street_music
+правильно з 11                                     7                 7                 7                 7                 7                 8                 8

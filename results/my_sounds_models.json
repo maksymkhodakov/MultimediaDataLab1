@@ -1,0 +1,175 @@
+{
+  "models": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F"
+  ],
+  "rows": [
+    {
+      "file": "air_conditioner_outdoor_unit.wav",
+      "expected": "air_conditioner",
+      "preds": {
+        "A": "jackhammer",
+        "B": "jackhammer",
+        "C": "air_conditioner",
+        "D": "air_conditioner",
+        "E": "children_playing",
+        "F": "air_conditioner",
+        "ens": "air_conditioner"
+      },
+      "ensemble_conf": 0.34749460220336914
+    },
+    {
+      "file": "car_horn.wav",
+      "expected": "car_horn",
+      "preds": {
+        "A": "children_playing",
+        "B": "dog_bark",
+        "C": "dog_bark",
+        "D": "dog_bark",
+        "E": "children_playing",
+        "F": "dog_bark",
+        "ens": "dog_bark"
+      },
+      "ensemble_conf": 0.5217512845993042
+    },
+    {
+      "file": "children_playing_playground.wav",
+      "expected": "children_playing",
+      "preds": {
+        "A": "children_playing",
+        "B": "children_playing",
+        "C": "children_playing",
+        "D": "children_playing",
+        "E": "children_playing",
+        "F": "children_playing",
+        "ens": "children_playing"
+      },
+      "ensemble_conf": 0.9829064607620239
+    },
+    {
+      "file": "dog_bark_street.wav",
+      "expected": "dog_bark",
+      "preds": {
+        "A": "dog_bark",
+        "B": "dog_bark",
+        "C": "dog_bark",
+        "D": "dog_bark",
+        "E": "dog_bark",
+        "F": "dog_bark",
+        "ens": "dog_bark"
+      },
+      "ensemble_conf": 0.9828746318817139
+    },
+    {
+      "file": "drilling_next_door.wav",
+      "expected": "drilling",
+      "preds": {
+        "A": "drilling",
+        "B": "drilling",
+        "C": "drilling",
+        "D": "dog_bark",
+        "E": "drilling",
+        "F": "drilling",
+        "ens": "drilling"
+      },
+      "ensemble_conf": 0.406753271818161
+    },
+    {
+      "file": "engine_idling_car.wav",
+      "expected": "engine_idling",
+      "preds": {
+        "A": "engine_idling",
+        "B": "engine_idling",
+        "C": "jackhammer",
+        "D": "engine_idling",
+        "E": "engine_idling",
+        "F": "jackhammer",
+        "ens": "engine_idling"
+      },
+      "ensemble_conf": 0.6120381951332092
+    },
+    {
+      "file": "gun_shot_9mm.wav",
+      "expected": "gun_shot",
+      "preds": {
+        "A": "gun_shot",
+        "B": "gun_shot",
+        "C": "gun_shot",
+        "D": "gun_shot",
+        "E": "gun_shot",
+        "F": "gun_shot",
+        "ens": "gun_shot"
+      },
+      "ensemble_conf": 0.9845207333564758
+    },
+    {
+      "file": "jackhammer_rock_drill.wav",
+      "expected": "jackhammer",
+      "preds": {
+        "A": "drilling",
+        "B": "drilling",
+        "C": "drilling",
+        "D": "drilling",
+        "E": "drilling",
+        "F": "drilling",
+        "ens": "drilling"
+      },
+      "ensemble_conf": 0.9279237389564514
+    },
+    {
+      "file": "siren_ambulance.wav",
+      "expected": "siren",
+      "preds": {
+        "A": "street_music",
+        "B": "street_music",
+        "C": "street_music",
+        "D": "street_music",
+        "E": "street_music",
+        "F": "siren",
+        "ens": "street_music"
+      },
+      "ensemble_conf": 0.680572509765625
+    },
+    {
+      "file": "siren_police.wav",
+      "expected": "siren",
+      "preds": {
+        "A": "siren",
+        "B": "siren",
+        "C": "siren",
+        "D": "siren",
+        "E": "siren",
+        "F": "siren",
+        "ens": "siren"
+      },
+      "ensemble_conf": 0.8132455945014954
+    },
+    {
+      "file": "street_music_violin.wav",
+      "expected": "street_music",
+      "preds": {
+        "A": "street_music",
+        "B": "street_music",
+        "C": "street_music",
+        "D": "street_music",
+        "E": "street_music",
+        "F": "street_music",
+        "ens": "street_music"
+      },
+      "ensemble_conf": 0.9966754913330078
+    }
+  ],
+  "correct": {
+    "A": 7,
+    "B": 7,
+    "C": 7,
+    "D": 7,
+    "E": 7,
+    "F": 8,
+    "ens": 8
+  }
+}

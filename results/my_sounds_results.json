@@ -1,5 +1,29 @@
 [
   {
+    "file": "air_conditioner_outdoor_unit.wav",
+    "duration": 29.95378684807256,
+    "n_windows": 14,
+    "expected": "air_conditioner",
+    "top3": [
+      [
+        "air_conditioner",
+        0.30012181401252747
+      ],
+      [
+        "children_playing",
+        0.25882115960121155
+      ],
+      [
+        "jackhammer",
+        0.19669154286384583
+      ]
+    ],
+    "correct": true,
+    "window_hits": 0.35714285714285715,
+    "figure": "my_air_conditioner_outdoor_unit.png",
+    "source": "Wikimedia Commons, «Resident air-conditioned out door unit.ogg», CC0, автор: Ranch9613"
+  },
+  {
     "file": "car_horn.wav",
     "duration": 3.5141496598639455,
     "n_windows": 1,
@@ -22,6 +46,30 @@
     "window_hits": 0.0,
     "figure": "my_car_horn.png",
     "source": "Wikimedia Commons, «Car Horn.wav», CC0, автор: 15HPanska_Ruttner_Jan"
+  },
+  {
+    "file": "children_playing_playground.wav",
+    "duration": 48.85006802721088,
+    "n_windows": 24,
+    "expected": "children_playing",
+    "top3": [
+      [
+        "children_playing",
+        0.971794605255127
+      ],
+      [
+        "street_music",
+        0.021779851987957954
+      ],
+      [
+        "dog_bark",
+        0.005103082396090031
+      ]
+    ],
+    "correct": true,
+    "window_hits": 1.0,
+    "figure": "my_children_playing_playground.png",
+    "source": "Wikimedia Commons, «Douzen kids on playground.ogg», Public domain, автор: stephan"
   },
   {
     "file": "dog_bark_street.wav",
@@ -70,6 +118,102 @@
     "window_hits": 0.5714285714285714,
     "figure": "my_drilling_next_door.png",
     "source": "Wikimedia Commons, «Drilling next door 4.ogg», Public domain, автор: ezwa"
+  },
+  {
+    "file": "engine_idling_car.wav",
+    "duration": 9.065578231292516,
+    "n_windows": 4,
+    "expected": "engine_idling",
+    "top3": [
+      [
+        "jackhammer",
+        0.5508359670639038
+      ],
+      [
+        "engine_idling",
+        0.35241106152534485
+      ],
+      [
+        "street_music",
+        0.053707465529441833
+      ]
+    ],
+    "correct": false,
+    "window_hits": 0.0,
+    "figure": "my_engine_idling_car.png",
+    "source": "Wikimedia Commons, «225 Slant Six.ogg», CC BY-SA 4.0, автор: Scheinwerfermann"
+  },
+  {
+    "file": "gun_shot_9mm.wav",
+    "duration": 1.7366439909297051,
+    "n_windows": 1,
+    "expected": "gun_shot",
+    "top3": [
+      [
+        "gun_shot",
+        0.9986349940299988
+      ],
+      [
+        "drilling",
+        0.0007222054409794509
+      ],
+      [
+        "dog_bark",
+        0.00028900615870952606
+      ]
+    ],
+    "correct": true,
+    "window_hits": 1.0,
+    "figure": "my_gun_shot_9mm.png",
+    "source": "Wikimedia Commons, «9 mm gunshot-mike-koenig-123.wav», CC BY-SA 4.0, автор: Dantedun"
+  },
+  {
+    "file": "jackhammer_rock_drill.wav",
+    "duration": 41.24299319727891,
+    "n_windows": 20,
+    "expected": "jackhammer",
+    "top3": [
+      [
+        "drilling",
+        0.9434719085693359
+      ],
+      [
+        "air_conditioner",
+        0.029904235154390335
+      ],
+      [
+        "jackhammer",
+        0.025145256891846657
+      ]
+    ],
+    "correct": false,
+    "window_hits": 0.0,
+    "figure": "my_jackhammer_rock_drill.png",
+    "source": "Wikimedia Commons, «WWS Hammerdrill.ogg», CC BY 4.0, автор: Work With Sounds / Konrad Gutkowski"
+  },
+  {
+    "file": "siren_ambulance.wav",
+    "duration": 62.04190476190476,
+    "n_windows": 31,
+    "expected": "siren",
+    "top3": [
+      [
+        "street_music",
+        0.8976612091064453
+      ],
+      [
+        "siren",
+        0.05578010901808739
+      ],
+      [
+        "car_horn",
+        0.04462616145610809
+      ]
+    ],
+    "correct": false,
+    "window_hits": 0.0,
+    "figure": "my_siren_ambulance.png",
+    "source": "Wikimedia Commons, «Het voorbijrijden van twee ambulances met sirenes - SoundCloud - Beeld en Geluid.ogg», CC BY-SA 3.0, автор: Beeld en Geluid"
   },
   {
     "file": "siren_police.wav",
