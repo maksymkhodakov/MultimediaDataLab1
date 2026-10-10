@@ -50,6 +50,16 @@ def f3(x: float) -> str:
     return f"{x:.3f}".replace(".", ",")
 
 
+def thousands(n: int) -> str:
+    """Ціле число з нерозривним пробілом між тисячами: 98 922."""
+    return f"{n:,}".replace(",", "\u00a0")
+
+
+def decimal(x: float, digits: int = 2) -> str:
+    """Число з десятковою комою і знаком «−»: −39,63."""
+    return f"{x:.{digits}f}".replace(".", ",").replace("-", "−")
+
+
 def pct(x: float, digits: int = 1) -> str:
     return f"{100 * x:.{digits}f}".replace(".", ",") + " %"
 
@@ -59,7 +69,10 @@ def ua(cls: str) -> str:
 
 
 def lr_str(lr: float) -> str:
-    return f"{lr:.0e}".replace("e-0", "·10⁻").replace("e-", "·10⁻")
+    """Число у вигляді «2·10⁻³» (мантиса і степінь з надрядковими цифрами)."""
+    mant, exp = f"{lr:.0e}".split("e")
+    sup = str.maketrans("-0123456789", "⁻⁰¹²³⁴⁵⁶⁷⁸⁹")
+    return f"{mant}·10{str(int(exp)).translate(sup)}"
 
 
 def build(toc_entries=None, n_pages=None, output=None):
@@ -416,7 +429,7 @@ def build(toc_entries=None, n_pages=None, output=None):
         f"{US8K_FRAMES} кадрів. Перед подачею в мережу спектрограми нормалізуються: "
         "від кожного значення віднімається середнє і ділиться на стандартне "
         "відхилення, обчислені лише на навчальній вибірці (для UrbanSound8K: "
-        f"середнє {us['norm']['mean']:.2f} дБ, відхилення {us['norm']['std']:.2f} дБ)."
+        f"середнє {decimal(us['norm']['mean'])} дБ, відхилення {decimal(us['norm']['std'])} дБ)."
     )
 
     r.subsection("3.4", "Програмна реалізація")
@@ -480,9 +493,9 @@ def build(toc_entries=None, n_pages=None, output=None):
             "Шари базової мережі AudioCNN (16-128 фільтрів) для UrbanSound8K",
             col_widths_mm=[18, 50, 62, 35])
     r.para(
-        f"Базова мережа має {base_params:,} параметрів, ширша – {wide_params:,}. "
-        .replace(",", " ")
-        + "Це дуже компактні моделі (для порівняння, ResNet-18 має ≈ 11 млн "
+        f"Базова мережа має {thousands(base_params)} параметри, ширша – "
+        f"{thousands(wide_params)}. "
+        "Це дуже компактні моделі (для порівняння, ResNet-18 має ≈ 11 млн "
         "параметрів), що зменшує ризик перенавчання на відносно невеликих датасетах."
     )
     r.subsection("4.2", "Параметри навчання")
@@ -526,7 +539,7 @@ def build(toc_entries=None, n_pages=None, output=None):
     r.table(["№", "Варіант", "Фільтри", "Spec-Aug", "lr", "Епох", "Парам.", "Найкр. епоха",
              "Train acc", "Val acc", "Test acc", "Macro-F1", "Час, с"], rows,
             "Порівняння варіантів мережі на UrbanSound8K",
-            col_widths_mm=[7, 34, 13, 10, 13, 8, 14, 10, 11, 11, 11, 12, 11], font_size=9)
+            col_widths_mm=[7, 32, 13, 10, 13, 8, 16, 10, 11, 11, 11, 12, 11], font_size=9)
     r.para(
         f"Графічне порівняння точності і macro-F1 показано на рисунку "
         f"{r.next_figure_number()}, а криві навчання – на рисунках "
@@ -616,7 +629,10 @@ def build(toc_entries=None, n_pages=None, output=None):
         f"{GTZAN_N_MELS}×{GTZAN_FRAMES}. Порівнювалися {len(gz['experiments'])} "
         f"варіанти (таблиця {r.next_table_number()}). Точність наведено на двох "
         "рівнях: для окремих 3-секундних фрагментів і для цілих треків після "
-        "усереднення ймовірностей 10 фрагментів."
+        "усереднення ймовірностей 10 фрагментів. Порівняння варіантів показано на "
+        f"рисунку {r.next_figure_number()}, криві точності і функції втрат – на "
+        f"рисунках 7.{int(r.next_figure_number().split('.')[1]) + 1} і "
+        f"7.{int(r.next_figure_number().split('.')[1]) + 2}."
     )
     rows = []
     for e in gz["experiments"]:
@@ -628,11 +644,13 @@ def build(toc_entries=None, n_pages=None, output=None):
     r.table(["№", "Варіант", "Spec-Aug", "Епох", "Парам.", "Найкр. епоха", "Val acc (фрагм.)",
              "Test acc (фрагм.)", "Test acc (треки)", "Macro-F1 (треки)", "Час, с"], rows,
             "Порівняння варіантів мережі на GTZAN",
-            col_widths_mm=[8, 42, 12, 10, 16, 12, 15, 15, 15, 12, 8], font_size=9)
+            col_widths_mm=[8, 40, 12, 9, 16, 12, 14, 14, 14, 14, 12], font_size=9)
     r.figure(FIGURES_DIR / "gtzan_experiments.png",
              "Точність варіантів мережі на тестових треках GTZAN: на рівні фрагментів і після голосування")
     r.figure(FIGURES_DIR / "gtzan_history_acc.png",
              "Криві точності на фрагментах GTZAN (навчання – суцільна, валідація – пунктир)")
+    r.figure(FIGURES_DIR / "gtzan_history_loss.png",
+             "Криві функції втрат на навчальній і валідаційній вибірках GTZAN")
     for text in GTZAN_ANALYSIS(gz, gz_exp, gz_best, gz_by_track):
         r.para(text)
 

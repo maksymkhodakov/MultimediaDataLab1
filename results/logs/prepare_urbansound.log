@@ -1,0 +1,35 @@
+Шардів UrbanSound8K: 16
+  data/train-00000-of-00016-e478d7cccca6a095.parquet: завантажено за 190 с
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  data/train-00000-of-00016-e478d7cccca6a095.parquet: 546 кліпів, усього 196 с
+  data/train-00001-of-00016-299138aa39afaa06.parquet: завантажено за 406 с
+  data/train-00001-of-00016-299138aa39afaa06.parquet: 546 кліпів, усього 408 с
+  data/train-00002-of-00016-887e0748205b6fa9.parquet: завантажено за 252 с
+  data/train-00002-of-00016-887e0748205b6fa9.parquet: 546 кліпів, усього 253 с
+  data/train-00003-of-00016-691ee48aa53d9c1f.parquet: завантажено за 204 с
+  data/train-00003-of-00016-691ee48aa53d9c1f.parquet: 546 кліпів, усього 206 с
+  data/train-00004-of-00016-c0f37514d8e28a72.parquet: завантажено за 197 с
+  data/train-00004-of-00016-c0f37514d8e28a72.parquet: 546 кліпів, усього 199 с
+  data/train-00005-of-00016-55ef1a0a51149c01.parquet: завантажено за 285 с
+  data/train-00005-of-00016-55ef1a0a51149c01.parquet: 546 кліпів, усього 287 с
+  data/train-00006-of-00016-0ef363072505e6d5.parquet: завантажено за 282 с
+  data/train-00006-of-00016-0ef363072505e6d5.parquet: 546 кліпів, усього 283 с
+  data/train-00007-of-00016-dfac173beb21e5db.parquet: завантажено за 257 с
+  data/train-00007-of-00016-dfac173beb21e5db.parquet: 546 кліпів, усього 259 с
+  data/train-00008-of-00016-2744487f32f65d77.parquet: завантажено за 236 с
+  data/train-00008-of-00016-2744487f32f65d77.parquet: 546 кліпів, усього 238 с
+  data/train-00009-of-00016-83fc7364d4798177.parquet: завантажено за 221 с
+  data/train-00009-of-00016-83fc7364d4798177.parquet: 546 кліпів, усього 223 с
+  data/train-00010-of-00016-4c1d0e285ed77843.parquet: завантажено за 141 с
+  data/train-00010-of-00016-4c1d0e285ed77843.parquet: 546 кліпів, усього 143 с
+  data/train-00011-of-00016-79d186503a26671b.parquet: завантажено за 0 с
+  data/train-00011-of-00016-79d186503a26671b.parquet: 546 кліпів, усього 2 с
+  data/train-00012-of-00016-6aff88fdcca22918.parquet: завантажено за 151 с
+  data/train-00012-of-00016-6aff88fdcca22918.parquet: 545 кліпів, усього 153 с
+  data/train-00013-of-00016-17d827b1a5be0423.parquet: завантажено за 131 с
+  data/train-00013-of-00016-17d827b1a5be0423.parquet: 545 кліпів, усього 133 с
+  data/train-00014-of-00016-c630762df85f6cf4.parquet: завантажено за 144 с
+  data/train-00014-of-00016-c630762df85f6cf4.parquet: 545 кліпів, усього 145 с
+  data/train-00015-of-00016-03506887d89adfc9.parquet: завантажено за 121 с
+  data/train-00015-of-00016-03506887d89adfc9.parquet: 545 кліпів, усього 123 с
+Збережено /Users/maksymkhodakov/PycharmProjects/MultimediaDataLab1/data/features/urbansound8k_logmel.npz: X=(8732, 64, 173)

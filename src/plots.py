@@ -33,6 +33,7 @@ plt.rcParams.update({
     "axes.edgecolor": "#8a8984",
     "savefig.dpi": 200,
     "savefig.bbox": "tight",
+    "axes.axisbelow": True,         # сітка — під стовпчиками та лініями, а не поверх
 })
 
 
@@ -40,20 +41,22 @@ def plot_spectrogram_grid(specs: list, titles: list, path, n_cols: int = 5,
                           seconds: float = None) -> None:
     """Сітка log-mel спектрограм (по одній на клас) — щоб показати їхню «текстуру»."""
     n_rows = int(np.ceil(len(specs) / n_cols))
-    fig, axes = plt.subplots(n_rows, n_cols, figsize=(3.0 * n_cols, 2.4 * n_rows))
+    # constrained_layout автоматично розсуває підграфіки, щоб підписи не накладались
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(3.2 * n_cols, 2.9 * n_rows),
+                             layout="constrained")
     axes = np.atleast_1d(axes).ravel()
     for ax, spec, title in zip(axes, specs, titles):
         dur = seconds if seconds else spec.shape[1] * HOP_LENGTH / SAMPLE_RATE
         im = ax.imshow(spec, origin="lower", aspect="auto", cmap="magma",
                        extent=[0, dur, 0, spec.shape[0]], vmin=-80, vmax=0)
-        ax.set_title(title, fontsize=10)
+        ax.set_title(title, fontsize=9)
         ax.set_xlabel("час, с", fontsize=8)
         ax.set_ylabel("mel-смуга", fontsize=8)
         ax.grid(False)
         ax.tick_params(labelsize=7)
     for ax in axes[len(specs):]:
         ax.axis("off")
-    fig.colorbar(im, ax=axes.tolist(), shrink=0.8, label="дБ")
+    fig.colorbar(im, ax=axes.tolist(), shrink=0.6, label="дБ")
     fig.savefig(path)
     plt.close(fig)
 

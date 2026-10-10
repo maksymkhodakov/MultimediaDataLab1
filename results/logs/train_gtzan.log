@@ -11,3 +11,160 @@
     [A] епоха  7/30: train loss=0.844 acc=0.718 | val loss=0.990 acc=0.635
     [A] епоха  8/30: train loss=0.764 acc=0.744 | val loss=1.483 acc=0.531
     [A] епоха  9/30: train loss=0.710 acc=0.760 | val loss=0.769 acc=0.731
+    [A] епоха 10/30: train loss=0.636 acc=0.785 | val loss=0.975 acc=0.671
+    [A] епоха 11/30: train loss=0.584 acc=0.807 | val loss=0.919 acc=0.716
+    [A] епоха 12/30: train loss=0.537 acc=0.824 | val loss=1.331 acc=0.627
+    [A] епоха 13/30: train loss=0.501 acc=0.830 | val loss=0.579 acc=0.799
+    [A] епоха 14/30: train loss=0.464 acc=0.842 | val loss=1.294 acc=0.635
+    [A] епоха 15/30: train loss=0.415 acc=0.863 | val loss=0.628 acc=0.784
+    [A] епоха 16/30: train loss=0.403 acc=0.865 | val loss=0.780 acc=0.721
+    [A] епоха 17/30: train loss=0.344 acc=0.892 | val loss=1.044 acc=0.728
+    [A] епоха 18/30: train loss=0.331 acc=0.892 | val loss=0.616 acc=0.795
+    [A] епоха 19/30: train loss=0.319 acc=0.893 | val loss=0.636 acc=0.804
+    [A] епоха 20/30: train loss=0.270 acc=0.913 | val loss=0.526 acc=0.837
+    [A] епоха 21/30: train loss=0.255 acc=0.919 | val loss=0.724 acc=0.811
+    [A] епоха 22/30: train loss=0.229 acc=0.923 | val loss=0.576 acc=0.827
+    [A] епоха 23/30: train loss=0.210 acc=0.933 | val loss=0.569 acc=0.845
+    [A] епоха 24/30: train loss=0.195 acc=0.942 | val loss=0.474 acc=0.865
+    [A] епоха 25/30: train loss=0.178 acc=0.948 | val loss=0.462 acc=0.887
+    [A] епоха 26/30: train loss=0.171 acc=0.950 | val loss=0.503 acc=0.869
+    [A] епоха 27/30: train loss=0.151 acc=0.958 | val loss=0.469 acc=0.870
+    [A] епоха 28/30: train loss=0.151 acc=0.957 | val loss=0.452 acc=0.880
+    [A] епоха 29/30: train loss=0.144 acc=0.961 | val loss=0.457 acc=0.876
+    [A] епоха 30/30: train loss=0.147 acc=0.961 | val loss=0.462 acc=0.876
+  A. базова (16-128), без аугментації       фрагменти: 0.823  треки (голосування): 0.875  val=0.887  (275 с)
+  [B] навчання: ширша (32-256) + SpecAugment
+    [B] епоха  1/30: train loss=1.794 acc=0.349 | val loss=1.434 acc=0.489
+    [B] епоха  2/30: train loss=1.443 acc=0.489 | val loss=1.289 acc=0.531
+    [B] епоха  3/30: train loss=1.259 acc=0.566 | val loss=1.012 acc=0.621
+    [B] епоха  4/30: train loss=1.102 acc=0.621 | val loss=2.061 acc=0.393
+    [B] епоха  5/30: train loss=1.033 acc=0.641 | val loss=1.470 acc=0.536
+    [B] епоха  6/30: train loss=0.967 acc=0.663 | val loss=1.084 acc=0.668
+    [B] епоха  7/30: train loss=0.886 acc=0.695 | val loss=0.942 acc=0.659
+    [B] епоха  8/30: train loss=0.825 acc=0.713 | val loss=2.238 acc=0.524
+    [B] епоха  9/30: train loss=0.798 acc=0.731 | val loss=0.860 acc=0.739
+    [B] епоха 10/30: train loss=0.714 acc=0.760 | val loss=0.919 acc=0.678
+    [B] епоха 11/30: train loss=0.640 acc=0.781 | val loss=0.776 acc=0.804
+    [B] епоха 12/30: train loss=0.604 acc=0.790 | val loss=1.330 acc=0.620
+    [B] епоха 13/30: train loss=0.581 acc=0.803 | val loss=0.812 acc=0.772
+    [B] епоха 14/30: train loss=0.547 acc=0.810 | val loss=1.607 acc=0.559
+    [B] епоха 15/30: train loss=0.502 acc=0.830 | val loss=2.209 acc=0.529
+    [B] епоха 16/30: train loss=0.456 acc=0.841 | val loss=0.918 acc=0.724
+    [B] епоха 17/30: train loss=0.404 acc=0.863 | val loss=0.898 acc=0.734
+    [B] епоха 18/30: train loss=0.407 acc=0.858 | val loss=1.267 acc=0.731
+    [B] епоха 19/30: train loss=0.376 acc=0.876 | val loss=0.881 acc=0.783
+    [B] епоха 20/30: train loss=0.318 acc=0.894 | val loss=0.562 acc=0.835
+    [B] епоха 21/30: train loss=0.307 acc=0.897 | val loss=0.681 acc=0.820
+    [B] епоха 22/30: train loss=0.272 acc=0.912 | val loss=0.735 acc=0.824
+    [B] епоха 23/30: train loss=0.260 acc=0.910 | val loss=0.596 acc=0.880
+    [B] епоха 24/30: train loss=0.235 acc=0.924 | val loss=0.593 acc=0.851
+    [B] епоха 25/30: train loss=0.216 acc=0.932 | val loss=0.533 acc=0.870
+    [B] епоха 26/30: train loss=0.199 acc=0.939 | val loss=0.571 acc=0.887
+    [B] епоха 27/30: train loss=0.186 acc=0.939 | val loss=0.422 acc=0.902
+    [B] епоха 28/30: train loss=0.184 acc=0.943 | val loss=0.436 acc=0.895
+    [B] епоха 29/30: train loss=0.177 acc=0.944 | val loss=0.443 acc=0.899
+    [B] епоха 30/30: train loss=0.177 acc=0.948 | val loss=0.442 acc=0.896
+  B. ширша (32-256) + SpecAugment           фрагменти: 0.841  треки (голосування): 0.895  val=0.902  (562 с)
+  [C] навчання: базова (16-128) + SpecAugment
+    [C] епоха  1/30: train loss=2.029 acc=0.268 | val loss=1.655 acc=0.417
+    [C] епоха  2/30: train loss=1.672 acc=0.403 | val loss=1.491 acc=0.435
+    [C] епоха  3/30: train loss=1.487 acc=0.473 | val loss=1.389 acc=0.507
+    [C] епоха  4/30: train loss=1.315 acc=0.547 | val loss=1.570 acc=0.511
+    [C] епоха  5/30: train loss=1.209 acc=0.578 | val loss=1.099 acc=0.589
+    [C] епоха  6/30: train loss=1.130 acc=0.603 | val loss=1.403 acc=0.576
+    [C] епоха  7/30: train loss=1.040 acc=0.638 | val loss=1.149 acc=0.599
+    [C] епоха  8/30: train loss=0.983 acc=0.657 | val loss=1.367 acc=0.527
+    [C] епоха  9/30: train loss=0.943 acc=0.673 | val loss=1.110 acc=0.686
+    [C] епоха 10/30: train loss=0.882 acc=0.697 | val loss=1.113 acc=0.637
+    [C] епоха 11/30: train loss=0.814 acc=0.718 | val loss=0.991 acc=0.716
+    [C] епоха 12/30: train loss=0.782 acc=0.729 | val loss=0.725 acc=0.771
+    [C] епоха 13/30: train loss=0.742 acc=0.744 | val loss=0.809 acc=0.734
+    [C] епоха 14/30: train loss=0.717 acc=0.757 | val loss=0.810 acc=0.701
+    [C] епоха 15/30: train loss=0.675 acc=0.767 | val loss=0.709 acc=0.770
+    [C] епоха 16/30: train loss=0.646 acc=0.782 | val loss=0.588 acc=0.799
+    [C] епоха 17/30: train loss=0.616 acc=0.785 | val loss=0.658 acc=0.783
+    [C] епоха 18/30: train loss=0.581 acc=0.804 | val loss=0.480 acc=0.842
+    [C] епоха 19/30: train loss=0.574 acc=0.809 | val loss=0.840 acc=0.766
+    [C] епоха 20/30: train loss=0.540 acc=0.813 | val loss=0.683 acc=0.771
+    [C] епоха 21/30: train loss=0.503 acc=0.829 | val loss=0.578 acc=0.856
+    [C] епоха 22/30: train loss=0.479 acc=0.837 | val loss=0.485 acc=0.854
+    [C] епоха 23/30: train loss=0.468 acc=0.844 | val loss=0.551 acc=0.851
+    [C] епоха 24/30: train loss=0.449 acc=0.850 | val loss=0.439 acc=0.876
+    [C] епоха 25/30: train loss=0.438 acc=0.853 | val loss=0.404 acc=0.890
+    [C] епоха 26/30: train loss=0.427 acc=0.857 | val loss=0.437 acc=0.892
+    [C] епоха 27/30: train loss=0.409 acc=0.862 | val loss=0.430 acc=0.879
+    [C] епоха 28/30: train loss=0.402 acc=0.867 | val loss=0.434 acc=0.889
+    [C] епоха 29/30: train loss=0.397 acc=0.867 | val loss=0.434 acc=0.889
+    [C] епоха 30/30: train loss=0.402 acc=0.867 | val loss=0.437 acc=0.887
+  C. базова (16-128) + SpecAugment          фрагменти: 0.809  треки (голосування): 0.860  val=0.892  (287 с)
+  [D] навчання: ширша + SpecAugment, 50 епох
+    [D] епоха  1/50: train loss=1.801 acc=0.348 | val loss=1.447 acc=0.482
+    [D] епоха  2/50: train loss=1.483 acc=0.474 | val loss=1.236 acc=0.581
+    [D] епоха  3/50: train loss=1.327 acc=0.545 | val loss=1.156 acc=0.601
+    [D] епоха  4/50: train loss=1.181 acc=0.597 | val loss=1.269 acc=0.559
+    [D] епоха  5/50: train loss=1.085 acc=0.636 | val loss=1.716 acc=0.431
+    [D] епоха  6/50: train loss=1.027 acc=0.643 | val loss=1.043 acc=0.629
+    [D] епоха  7/50: train loss=0.939 acc=0.678 | val loss=1.740 acc=0.450
+    [D] епоха  8/50: train loss=0.897 acc=0.694 | val loss=1.476 acc=0.618
+    [D] епоха  9/50: train loss=0.868 acc=0.705 | val loss=1.218 acc=0.688
+    [D] епоха 10/50: train loss=0.790 acc=0.732 | val loss=0.819 acc=0.704
+    [D] епоха 11/50: train loss=0.737 acc=0.747 | val loss=0.663 acc=0.816
+    [D] епоха 12/50: train loss=0.717 acc=0.748 | val loss=1.254 acc=0.655
+    [D] епоха 13/50: train loss=0.688 acc=0.765 | val loss=0.997 acc=0.736
+    [D] епоха 14/50: train loss=0.650 acc=0.773 | val loss=2.197 acc=0.466
+    [D] епоха 15/50: train loss=0.606 acc=0.793 | val loss=1.657 acc=0.577
+    [D] епоха 16/50: train loss=0.569 acc=0.801 | val loss=1.310 acc=0.640
+    [D] епоха 17/50: train loss=0.511 acc=0.830 | val loss=1.056 acc=0.681
+    [D] епоха 18/50: train loss=0.508 acc=0.825 | val loss=2.083 acc=0.605
+    [D] епоха 19/50: train loss=0.480 acc=0.839 | val loss=1.241 acc=0.683
+    [D] епоха 20/50: train loss=0.438 acc=0.848 | val loss=1.286 acc=0.676
+    [D] епоха 21/50: train loss=0.423 acc=0.850 | val loss=1.091 acc=0.748
+    [D] епоха 22/50: train loss=0.389 acc=0.865 | val loss=1.668 acc=0.627
+    [D] епоха 23/50: train loss=0.376 acc=0.877 | val loss=1.185 acc=0.736
+    [D] епоха 24/50: train loss=0.343 acc=0.885 | val loss=1.320 acc=0.707
+    [D] епоха 25/50: train loss=0.334 acc=0.885 | val loss=1.062 acc=0.720
+    [D] епоха 26/50: train loss=0.308 acc=0.895 | val loss=1.232 acc=0.679
+    [D] епоха 27/50: train loss=0.282 acc=0.904 | val loss=0.872 acc=0.780
+    [D] епоха 28/50: train loss=0.272 acc=0.910 | val loss=0.757 acc=0.794
+    [D] епоха 29/50: train loss=0.249 acc=0.913 | val loss=0.867 acc=0.839
+    [D] епоха 30/50: train loss=0.241 acc=0.918 | val loss=0.633 acc=0.804
+    [D] епоха 31/50: train loss=0.210 acc=0.930 | val loss=0.767 acc=0.836
+    [D] епоха 32/50: train loss=0.198 acc=0.933 | val loss=1.080 acc=0.777
+    [D] епоха 33/50: train loss=0.188 acc=0.938 | val loss=0.630 acc=0.855
+    [D] епоха 34/50: train loss=0.171 acc=0.942 | val loss=0.558 acc=0.868
+    [D] епоха 35/50: train loss=0.150 acc=0.953 | val loss=0.521 acc=0.890
+    [D] епоха 36/50: train loss=0.150 acc=0.952 | val loss=0.499 acc=0.879
+    [D] епоха 37/50: train loss=0.131 acc=0.961 | val loss=0.573 acc=0.870
+    [D] епоха 38/50: train loss=0.118 acc=0.964 | val loss=0.805 acc=0.851
+    [D] епоха 39/50: train loss=0.110 acc=0.966 | val loss=0.581 acc=0.882
+    [D] епоха 40/50: train loss=0.105 acc=0.969 | val loss=0.692 acc=0.868
+    [D] епоха 41/50: train loss=0.091 acc=0.973 | val loss=0.559 acc=0.885
+    [D] епоха 42/50: train loss=0.095 acc=0.975 | val loss=0.555 acc=0.886
+    [D] епоха 43/50: train loss=0.084 acc=0.977 | val loss=0.597 acc=0.886
+    [D] епоха 44/50: train loss=0.083 acc=0.976 | val loss=0.581 acc=0.892
+    [D] епоха 45/50: train loss=0.079 acc=0.976 | val loss=0.554 acc=0.900
+    [D] епоха 46/50: train loss=0.080 acc=0.977 | val loss=0.529 acc=0.902
+    [D] епоха 47/50: train loss=0.072 acc=0.980 | val loss=0.564 acc=0.897
+    [D] епоха 48/50: train loss=0.072 acc=0.979 | val loss=0.562 acc=0.899
+    [D] епоха 49/50: train loss=0.071 acc=0.980 | val loss=0.550 acc=0.904
+    [D] епоха 50/50: train loss=0.070 acc=0.980 | val loss=0.541 acc=0.899
+  D. ширша + SpecAugment, 50 епох           фрагменти: 0.853  треки (голосування): 0.905  val=0.904  (1012 с)
+Найкращий за валідацією варіант: D. ширша + SpecAugment, 50 епох (val acc фрагментів = 0.904)
+              precision    recall  f1-score   support
+
+       blues      1.000     0.950     0.974        20
+   classical      1.000     1.000     1.000        20
+     country      0.826     0.950     0.884        20
+       disco      0.941     0.800     0.865        20
+      hiphop      0.864     0.950     0.905        20
+        jazz      0.952     1.000     0.976        20
+       metal      1.000     0.950     0.974        20
+         pop      0.739     0.850     0.791        20
+      reggae      1.000     0.800     0.889        20
+        rock      0.800     0.800     0.800        20
+
+    accuracy                          0.905       200
+   macro avg      0.912     0.905     0.906       200
+weighted avg      0.912     0.905     0.906       200
+
+Результати збережено у /Users/maksymkhodakov/PycharmProjects/MultimediaDataLab1/results/gtzan_results.json

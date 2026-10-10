@@ -1,0 +1,393 @@
+{
+  "n_tracks": 999,
+  "n_segments": 9990,
+  "spec_shape": [
+    96,
+    130
+  ],
+  "split_tracks": {
+    "train": 719,
+    "val": 80,
+    "test": 200
+  },
+  "split_segments": {
+    "train": 7190,
+    "val": 800,
+    "test": 2000
+  },
+  "layers": [
+    [
+      "features.0.block.0",
+      "Conv2d",
+      "(32, 96, 130)",
+      320
+    ],
+    [
+      "features.0.block.1",
+      "BatchNorm2d",
+      "(32, 96, 130)",
+      64
+    ],
+    [
+      "features.0.block.2",
+      "ReLU",
+      "(32, 96, 130)",
+      0
+    ],
+    [
+      "features.0.block.3",
+      "MaxPool2d",
+      "(32, 48, 65)",
+      0
+    ],
+    [
+      "features.1.block.0",
+      "Conv2d",
+      "(64, 48, 65)",
+      18496
+    ],
+    [
+      "features.1.block.1",
+      "BatchNorm2d",
+      "(64, 48, 65)",
+      128
+    ],
+    [
+      "features.1.block.2",
+      "ReLU",
+      "(64, 48, 65)",
+      0
+    ],
+    [
+      "features.1.block.3",
+      "MaxPool2d",
+      "(64, 24, 32)",
+      0
+    ],
+    [
+      "features.2.block.0",
+      "Conv2d",
+      "(128, 24, 32)",
+      73856
+    ],
+    [
+      "features.2.block.1",
+      "BatchNorm2d",
+      "(128, 24, 32)",
+      256
+    ],
+    [
+      "features.2.block.2",
+      "ReLU",
+      "(128, 24, 32)",
+      0
+    ],
+    [
+      "features.2.block.3",
+      "MaxPool2d",
+      "(128, 12, 16)",
+      0
+    ],
+    [
+      "features.3.block.0",
+      "Conv2d",
+      "(256, 12, 16)",
+      295168
+    ],
+    [
+      "features.3.block.1",
+      "BatchNorm2d",
+      "(256, 12, 16)",
+      512
+    ],
+    [
+      "features.3.block.2",
+      "ReLU",
+      "(256, 12, 16)",
+      0
+    ],
+    [
+      "features.3.block.3",
+      "MaxPool2d",
+      "(256, 6, 8)",
+      0
+    ],
+    [
+      "pool",
+      "AdaptiveAvgPool2d",
+      "(256, 1, 1)",
+      0
+    ],
+    [
+      "dropout",
+      "Dropout",
+      "(256,)",
+      0
+    ],
+    [
+      "classifier",
+      "Linear",
+      "(10,)",
+      2570
+    ]
+  ],
+  "experiments": [
+    {
+      "key": "A",
+      "title": "базова (16-128), без аугментації",
+      "config": {
+        "key": "A",
+        "title": "базова (16-128), без аугментації",
+        "base_channels": 16,
+        "lr": 0.002,
+        "epochs": 30,
+        "batch_size": 64,
+        "weight_decay": 0.01,
+        "dropout": 0.3,
+        "spec_augment": false,
+        "freq_mask": 8,
+        "time_mask": 20,
+        "n_masks": 2
+      },
+      "n_params": 98922,
+      "best_epoch": 25,
+      "best_val_acc": 0.887499988079071,
+      "seg_acc": 0.8225,
+      "track_acc": 0.875,
+      "track_f1": 0.8742926450243523,
+      "train_seconds": 274.8543541431427,
+      "final_train_acc": 0.9609179415855355
+    },
+    {
+      "key": "B",
+      "title": "ширша (32-256) + SpecAugment",
+      "config": {
+        "key": "B",
+        "title": "ширша (32-256) + SpecAugment",
+        "base_channels": 32,
+        "lr": 0.002,
+        "epochs": 30,
+        "batch_size": 64,
+        "weight_decay": 0.01,
+        "dropout": 0.3,
+        "spec_augment": true,
+        "freq_mask": 12,
+        "time_mask": 15,
+        "n_masks": 2
+      },
+      "n_params": 391370,
+      "best_epoch": 27,
+      "best_val_acc": 0.9024999737739563,
+      "seg_acc": 0.8405,
+      "track_acc": 0.895,
+      "track_f1": 0.8949389497271397,
+      "train_seconds": 561.5180349349976,
+      "final_train_acc": 0.9475660639777469
+    },
+    {
+      "key": "C",
+      "title": "базова (16-128) + SpecAugment",
+      "config": {
+        "key": "C",
+        "title": "базова (16-128) + SpecAugment",
+        "base_channels": 16,
+        "lr": 0.002,
+        "epochs": 30,
+        "batch_size": 64,
+        "weight_decay": 0.01,
+        "dropout": 0.3,
+        "spec_augment": true,
+        "freq_mask": 12,
+        "time_mask": 15,
+        "n_masks": 2
+      },
+      "n_params": 98922,
+      "best_epoch": 26,
+      "best_val_acc": 0.8924999833106995,
+      "seg_acc": 0.809,
+      "track_acc": 0.86,
+      "track_f1": 0.86007839007839,
+      "train_seconds": 287.24573707580566,
+      "final_train_acc": 0.8671766342141863
+    },
+    {
+      "key": "D",
+      "title": "ширша + SpecAugment, 50 епох",
+      "config": {
+        "key": "D",
+        "title": "ширша + SpecAugment, 50 епох",
+        "base_channels": 32,
+        "lr": 0.002,
+        "epochs": 50,
+        "batch_size": 64,
+        "weight_decay": 0.01,
+        "dropout": 0.3,
+        "spec_augment": true,
+        "freq_mask": 12,
+        "time_mask": 15,
+        "n_masks": 2
+      },
+      "n_params": 391370,
+      "best_epoch": 49,
+      "best_val_acc": 0.9037500023841858,
+      "seg_acc": 0.853,
+      "track_acc": 0.905,
+      "track_f1": 0.9057261967982331,
+      "train_seconds": 1012.3421359062195,
+      "final_train_acc": 0.9803894297635605
+    }
+  ],
+  "best_key": "D",
+  "report": {
+    "blues": {
+      "precision": 1.0,
+      "recall": 0.95,
+      "f1-score": 0.9743589743589743,
+      "support": 20.0
+    },
+    "classical": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 20.0
+    },
+    "country": {
+      "precision": 0.8260869565217391,
+      "recall": 0.95,
+      "f1-score": 0.8837209302325582,
+      "support": 20.0
+    },
+    "disco": {
+      "precision": 0.9411764705882353,
+      "recall": 0.8,
+      "f1-score": 0.8648648648648649,
+      "support": 20.0
+    },
+    "hiphop": {
+      "precision": 0.8636363636363636,
+      "recall": 0.95,
+      "f1-score": 0.9047619047619048,
+      "support": 20.0
+    },
+    "jazz": {
+      "precision": 0.9523809523809523,
+      "recall": 1.0,
+      "f1-score": 0.975609756097561,
+      "support": 20.0
+    },
+    "metal": {
+      "precision": 1.0,
+      "recall": 0.95,
+      "f1-score": 0.9743589743589743,
+      "support": 20.0
+    },
+    "pop": {
+      "precision": 0.7391304347826086,
+      "recall": 0.85,
+      "f1-score": 0.7906976744186046,
+      "support": 20.0
+    },
+    "reggae": {
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1-score": 0.8888888888888888,
+      "support": 20.0
+    },
+    "rock": {
+      "precision": 0.8,
+      "recall": 0.8,
+      "f1-score": 0.8,
+      "support": 20.0
+    },
+    "accuracy": 0.905,
+    "macro avg": {
+      "precision": 0.9122411177909899,
+      "recall": 0.905,
+      "f1-score": 0.9057261967982331,
+      "support": 200.0
+    },
+    "weighted avg": {
+      "precision": 0.9122411177909899,
+      "recall": 0.905,
+      "f1-score": 0.9057261967982331,
+      "support": 200.0
+    }
+  },
+  "top_confusions": [
+    [
+      3,
+      "rock",
+      "pop"
+    ],
+    [
+      2,
+      "reggae",
+      "pop"
+    ],
+    [
+      2,
+      "disco",
+      "country"
+    ],
+    [
+      1,
+      "rock",
+      "hiphop"
+    ],
+    [
+      1,
+      "reggae",
+      "jazz"
+    ],
+    [
+      1,
+      "reggae",
+      "country"
+    ],
+    [
+      1,
+      "pop",
+      "rock"
+    ],
+    [
+      1,
+      "pop",
+      "hiphop"
+    ],
+    [
+      1,
+      "pop",
+      "country"
+    ],
+    [
+      1,
+      "metal",
+      "rock"
+    ],
+    [
+      1,
+      "hiphop",
+      "disco"
+    ],
+    [
+      1,
+      "disco",
+      "pop"
+    ],
+    [
+      1,
+      "disco",
+      "hiphop"
+    ],
+    [
+      1,
+      "country",
+      "rock"
+    ],
+    [
+      1,
+      "blues",
+      "rock"
+    ]
+  ]
+}
